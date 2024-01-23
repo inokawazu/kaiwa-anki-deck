@@ -18,10 +18,11 @@ def main():
     sents["obi2_int"] = col.map(obi_str_to_num)
     sents.sort_values("obi2_int", inplace=True)
     sents['anki_tags'] = 'id::' + sents['id'].astype(str)\
-        + ',particle::' + sents['particle']\
-        + ',word::' + sents['word']\
-        + ',kanji::' + sents['kanji']\
-        + ',obi::' + sents['obi2_int'].astype(str)
+        + ' particle::' + sents['particle']\
+        + ' word::' + sents['word']\
+        + ' kanji::' + sents['kanji'].map(lambda s: s.replace(",", "-"))\
+        + ' obi::' + sents['obi2_int'].astype(str)
+    sents['anki_tags'] = sents['anki_tags']
     sents.to_csv("anki_kaiwa.csv", index=False, header=False)
 
 
