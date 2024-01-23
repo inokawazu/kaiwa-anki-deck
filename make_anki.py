@@ -9,6 +9,10 @@ def obi_str_to_num(sobi: str) -> int:
     return int(sobi.split()[0])
 
 
+def kanji_tags(skanjis: str) -> str:
+    return "".join(' kanji::' + skanji for skanji in skanjis.split(","))
+
+
 def main():
     if len(sys.argv) != 2:
         print(f"usage: {sys.argv[0]} <inputfile.csv>")
@@ -20,9 +24,8 @@ def main():
     sents['anki_tags'] = 'id::' + sents['id'].astype(str)\
         + ' particle::' + sents['particle']\
         + ' word::' + sents['word']\
-        + ' kanji::' + sents['kanji'].map(lambda s: s.replace(",", "-"))\
+        + ' kanji::' + sents['kanji'].map(kanji_tags)\
         + ' obi::' + sents['obi2_int'].astype(str)
-    sents['anki_tags'] = sents['anki_tags']
     sents.to_csv("anki_kaiwa.csv", index=False, header=False)
 
 
