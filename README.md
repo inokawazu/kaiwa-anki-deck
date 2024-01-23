@@ -2,6 +2,11 @@
 
 This is a simple repo that converts data taken from [Kanjium - the ultimate kanji resource](https://github.com/mifunetoshiro/kanjium).
 
+Scripts require
+
+- python 3
+- pandas
+
 ## Running Script
 
 Run from the repo base path
