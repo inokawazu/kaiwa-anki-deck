@@ -1,6 +1,5 @@
 import pandas as pd
 import sys
-import os
 
 # initial fields: id,japanese,english,particle,word,kanji,furigana,obi2
 
